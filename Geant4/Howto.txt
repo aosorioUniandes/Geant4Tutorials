@@ -1,0 +1,9 @@
+cd Geant4/
+ls
+mkdir B1-build
+cd B1-build/
+cmake -DGeant4_DIR=/opt/hepsw/geant4/install/share/Geant4-10.2.2 /home/detectores/Geant4Tutorials/Geant4/B1
+make
+./exampleB1
+
+
