@@ -1,9 +1,48 @@
-cd Geant4/
-ls
+Ejemplo 1:
+
 mkdir B1-build
 cd B1-build/
-cmake -DGeant4_DIR=/opt/hepsw/geant4/install/share/Geant4-10.2.2 /home/detectores/Geant4Tutorials/Geant4/B1
+cmake /home/detectores/Geant4Tutorials/Geant4/B1
 make
 ./exampleB1
 
+Ejemplo 2:
 
+mkdir HandsOn2-build
+cd HandsOn2-build
+cmake /home/detectores/Geant4Tutorials/Geant4/HandsOn2
+make
+./SlacTut
+
+*** Modificaciones en el codigo del ejemplo:
+
+//Para adicionar un material:
+
+G4Element* el_i = new G4Element("Iodine","I", 53,126.9*g/mole); 
+G4Element* el_cs = new G4Element("Cesium","Cs",55,132.9*g/mole); 
+G4Material* mat_csi = new G4Material("CsI",4.51*g/cm3,2); 
+mat_csi->AddElement(el_i,1);  // 1 = fraccion
+mat_csi->AddElement(el_cs,1); // 1 = fraccion
+
+//Para adicionar un nuevo elemento de geometria
+
+G4Material* material = G4Material::GetMaterial("CsI"); 
+G4VSolid* hadCalorimeterSolid = new G4Box("HadCalorimeterBox",1.5*m,30.*cm,50.*cm); 
+G4LogicalVolume* hadCalorimeterLogical = new G4LogicalVolume(hadCalorimeterSolid,material,"HadCalorimeterLogical"); 
+  new G4PVPlacement(0,G4ThreeVector (0.,0.,3.*m),hadCalorimeterLogical,"HadCalorimeterPhysical",secondArmLogical,false,0,checkOverlaps);
+
+//Para activar el scorer:
+
+// Activate UI-command base scorer 
+G4ScoringManager * scManager =   G4ScoringManager::GetScoringManager(); 
+scManager->SetVerboseLevel(1);
+
+//comandos importantes en Geant4
+
+Cambiar el haz de particulas
+
+/gun/particle pi+
+
+Lanzar el haz de particulas y ejecutar un numero de eventos
+
+/run/beamOn 1
