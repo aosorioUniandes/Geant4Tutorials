@@ -9,10 +9,10 @@ using namespace std;
 int main( ) 
 {
   
-  cout << "Hola, me llamo Andres" << endl;
+  cout << "Hola, me llamo Siba" << endl;
  
   //1.
-  cout << "Clase del dia 3" << endl;
+  cout << "el dia3" << endl;
 
   return 0;
   
