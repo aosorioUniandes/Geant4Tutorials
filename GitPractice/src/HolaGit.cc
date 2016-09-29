@@ -11,13 +11,8 @@ int main( )
   
   cout << "Hola, me llamo Alexandra" << endl;
  
-  //1.
-  cout << "Hola, me llamo Alexandra" << endl;
-
-  cout << "Hola, me llamo Siba" << endl;
- 
-  //1.
-  cout << "el dia3" << endl;
+  //1. editar despues de esta linea
+  
 
   return 0;
   
